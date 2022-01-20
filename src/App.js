@@ -15,6 +15,15 @@ function App() {
   const [calculatedReturn, setCalculatedReturn] = useState(null);
   const [errorSizeArray, setErrorSizeArray] = useState(false);
 
+  const errorsMsg = (inputName) => {
+    if (errors[inputName])
+      return (
+        <p className="text-sm font-medium mt-1 text-red-500">
+          {errors[inputName].message}
+        </p>
+      );
+  };
+
   const onChangeInitialIndex = (el) => {
     setCalculatedReturn(null);
     setInitialIndex(Number(el));
@@ -55,11 +64,7 @@ function App() {
                   },
                 })}
               />
-              {errors.stations && (
-                <p className="text-sm font-medium mt-1 text-red-500">
-                  {errors.stations.message}
-                </p>
-              )}
+              {errorsMsg("stations")}
             </div>
           </div>
           <div className="mt-5">
@@ -80,11 +85,7 @@ function App() {
                   },
                 })}
               />
-              {errors.costs && (
-                <p className="text-sm font-medium mt-1 text-red-500">
-                  {errors.costs.message}
-                </p>
-              )}
+              {errorsMsg("costs")}
             </div>
           </div>
           <div className="mt-5">
@@ -107,23 +108,14 @@ function App() {
               })}
               onChange={(e) => onChangeInitialIndex(e.target.value)}
             />
-            {errors.initialIndex && (
-              <p className="text-sm font-medium mt-1 text-red-500">
-                {errors.initialIndex.message}
-              </p>
-            )}
+            {errorsMsg("initialIndex")}
           </div>
           {errorSizeArray && (
             <p className="text-sm font-medium mt-1 text-red-500">
               los arrays de grifos y costos deben ser del mismo tamanio
             </p>
           )}
-
-          <Button
-            form="primary"
-            type="submit"
-            styles="mt-5 w-full flex justify-center items-center"
-          >
+          <Button form="primary" type="submit" styles="mt-5 w-full">
             Calcular
           </Button>
         </form>
