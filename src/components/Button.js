@@ -12,9 +12,9 @@ export default function Button({
   children,
 }) {
   const buttonsForm = {
-    primary: "text-white bg-orange-500 hover:bg-orange-600",
+    primary: "text-white bg-indigo-500 hover:bg-indigo-600",
     secondary: "text-gray-500 hover:bg-gray-100 border",
-    text: "text-orange-500 hover:text-orange-600",
+    text: "text-indigo-500 hover:text-indigo-600",
   };
 
   return (
